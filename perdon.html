@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Me Perdonas?</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            font-family: 'Nunito', sans-serif;
+        }
+        .cute-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: scale(1);
+            position: relative;
+            overflow: hidden;
+        }
+        .cute-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        .cute-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(-45deg);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        .cute-button:hover::before {
+            opacity: 1;
+        }
+        .title {
+            font-family: 'Indie Flower', cursive;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center bg-white p-10 rounded-2xl shadow-2xl max-w-md w-full mx-4">
+        <h1 class="text-5xl font-bold mb-6 text-gray-800 title">¿Me Perdonas?</h1>
+        
+        <!-- Espacio para GIF -->
+        <div class="mb-8 flex justify-center">
+            <div class="w-64 h-48 bg-gray-200 flex items-center justify-center text-gray-500 rounded-lg shadow-md">
+                <img src="https://media.tenor.com/HPht2t341E8AAAAM/puppy-dog-eyes-sad.gif" alt="">
+            </div>
+        </div>
+
+        <div class="flex justify-center space-x-6">
+            <button id="siBtn" class="cute-button bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 ease-in-out">
+                Sí 💖
+            </button>
+            <button id="noBtn" class="cute-button bg-red-500 hover:bg-red-600 text-white font-bold py-4 px-8 rounded-full text-xl transition-all duration-300 ease-in-out">
+                No 
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const siBtn = document.getElementById('siBtn');
+
+        noBtn.addEventListener('mouseover', () => {
+            const maxWidth = window.innerWidth - noBtn.offsetWidth;
+            const maxHeight = window.innerHeight - noBtn.offsetHeight;
+
+            const randomX = Math.random() * maxWidth;
+            const randomY = Math.random() * maxHeight;
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        });
+
+        siBtn.addEventListener('click', () => {
+            document.body.innerHTML = `
+                <div class="text-center bg-white p-10 rounded-2xl shadow-2xl" style="background: linear-gradient(135deg, #ffa8a8, #ff6b6b); font-family: 'Nunito', sans-serif;">
+                    <h1 class="text-5xl font-bold mb-6 text-white title">¡Gracias por Perdonarme! 🎉</h1>
+                    <p class="text-2xl text-white">Significas mucho para mí Clau. Lo siento de verdad. Algún día te enseñaré a programar algo tan chulo como esto.</p>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
